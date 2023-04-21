@@ -5,5 +5,5 @@
 5.Open the Helpers tab and click to the Patch button near the "Gaming Edition"
 6.Go to main tab and then press Stop BS
 7.go to C:\ProgramData\BlueStacks_bgp64\Client and then replace the game_config.json with the one in the archive
-8.Start bluestacks and install RotationControl.apk and NavigationBar.apk (both optional)
+8.Start bluestacks and install the other apks (optional)
 9.Have fun.
