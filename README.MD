@@ -2,4 +2,4 @@
 
 Non-Bloated Version of BlueStacks 4 x64 (Android 7)
 Run the Install.bat as administrator otherwise it will not work, follow instructions inside readme.txt for more information.
-[![Video Tutorial][https://imgur.com/e6627ce5-59ca-43ad-9f44-9ea01249c65f](https://img.youtube.com/vi/CQN4nZwOti4/maxresdefault.jpg))](https://www.youtube.com/watch?v=CQN4nZwOti4)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/CQN4nZwOti4/maxresdefault.jpg)](https://www.youtube.com/watch?v=CQN4nZwOti4)
