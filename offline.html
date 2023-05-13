@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" type="text/css" href="css/index.css" />
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>Bluestacks Home</title>
+  <script type="text/javascript">
+    window._arabica = {};
+  </script>
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/gmApi.js"></script>
+  <script type="text/javascript" src="js/utils.js"></script>
+  <script type="text/javascript">
+    var module = _arabica.fetchParamFromUrl("module");
+    _arabica.host =
+      GmApi.gmDevUrl() || module || "";
+  </script>
+  <script type="text/javascript" src="localization/index.js"></script>
+  <script type="text/javascript" src="js/localize.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+</head>
+
+<body>
+  <div class="container library">
+    <div class="flex header spaceBetween vrtlCenter">
+      <div class="flex spaceBetween grow">
+        <ul class="navBar flex">
+          <li class="margin-right-25">
+            <a aria-current="page" class="bold activeLink link library" href="javascript:void(0)" data-str-id="library"
+              onclick="handleTabClick('library')"></a>
+          </li>
+        </ul>
+        <div class="flex flexEnd">
+          <div class="reload flex vrtlCenter pointer capitalize tooltip" onclick="refreshhomehtml()">
+            <img src='images/ReloadIcon.png' />
+            <span class="tooltiptext" data-str-id="reload"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contentSection">
+      <div id="library" class="tab">
+        <div>
+          <div class="flex spaceBetween margin-bottom-20 stickyScrollHeader title">
+            <div class="flex vrtlCenter">
+              <p class="heading sectionHeading" data-str-id="allInstalled"></p>
+              <span class="flex column pointer menuOptions" onclick="showMenuOptions();"><span class="dot"></span><span
+                  class="dot"></span><span class="dot"></span>
+                <div class="menuOptionsContainer">
+                  <div class="transparentBg" onclick="hideMenuOptions(event);"></div>
+                  <ul class="optionsList font12">
+                    <li data-str-id="installApk" onclick="installApk(event);"></li>
+                    <li data-str-id="deleteApps" onclick="deleteApps(event);"></li>
+                  </ul>
+                </div>
+              </span>
+            </div>
+          </div>
+          <div class="flex wrap gameListContainer">
+            <ul class="flex gameList wrap" id="installedApps">
+              <li class="pointer" style="width: 100px;" onclick="handleClick('playStore')">
+                <div class="installedGame">
+                  <img src="./images/googlePlayStore.png" alt="gameImage" />
+                </div>
+                <p class="bold ellipsis gameName">Google Play Store</p>
+              </li>
+            </ul>
+            <ul class="flex gameList wrap bsApps">
+              <li class="pointer" style="width: 100px;" onClick="openSystemApps();">
+                <div class="installedGame appSleeveContainer gameCenterBg">
+                  <div class="flex wrap vrtlCenter appSleeveCollector">
+                    <img src="./images/camera.png" class="slideIcon" /><img src="./images/settings.png"
+                      class="slideIcon" /><img src="./images/media.png" class="slideIcon" /><img
+                      src="./images/chrome.png" class="slideIcon" />
+                  </div>
+                </div>
+                <p class="bold ellipsis gameName" data-str-id="systemApps"></p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div id="noInternet" class="tab flex perfectCenter" class="tab">
+        <p class="offlineText" data-str-id="noInternet"></p>
+      </div>
+    </div>
+    <div class="modalContainer">
+      <div class="transparentBg" onclick="hideSystemApps();"></div>
+      <div class="folderPopup gameCenterBg">
+        <div class="flex spaceBetween modalHeading vrtlCenter">
+          <p class="ellipsis" data-str-id="systemApps"></p>
+          <img src="./images/closeIcon.png" class="folderCloseIcon pointer" alt="closeIcon"
+            onclick="hideSystemApps();" />
+        </div>
+        <div class="folderAppsContainer">
+          <div>
+            <ul class="flex gameList wrap">
+              <li class="pointer" onclick="handleClick('android')">
+                <div class="imageContainer">
+                  <img src="./images/settings.png" alt="bsApp" />
+                </div>
+                <p class="bold ellipsis gameName">Android Settings</p>
+              </li>
+              <li class="pointer" onclick="handleClick('media')">
+                <div class="imageContainer ">
+                  <img src="./images/media.png" alt="bsApp" />
+                </div>
+                <p class="bold ellipsis gameName">Media Manager</p>
+              </li>
+              <li class="pointer" onclick="handleClick('chrome')">
+                <div class="imageContainer ">
+                  <img src="./images/chrome.png" alt="bsApp" />
+                </div>
+                <p class="bold ellipsis gameName">Browser</p>
+              </li>
+              <li class="pointer" onclick="handleClick('camera')">
+                <div class="imageContainer ">
+                  <img src="./images/camera.png" alt="bsApp" />
+                </div>
+                <p class="bold ellipsis gameName">Camera</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="deleteOverlay" onclick="hideDeleteButton();"></div>
+    <div class="uninstallPopup">
+      <div class="flex spaceBetween modalHeading">
+        <p class="deleteText bold">Delete app</p>
+        <img src="./images/closeIcon_uninstall.png" class="closeIcon pointer" alt="closeIcon" onclick="hideDeleteButton();" />
+      </div>
+      <p class="deleteText modalHeading" data-str-id="areYouSure"></p>
+      <div class="flex flexEnd">
+        <button class="whiteButton" onclick="hideDeleteButton();">
+          <p data-str-id="cancel"></p>
+        </button><button class="warningButton" onclick="uninstallGame();">
+          <p data-str-id="delete"></p>
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
